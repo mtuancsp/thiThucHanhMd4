@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete City</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #message {
+            color: green;
+        }
+        table {
+            border: 1px solid black;
+        }
+        a {
+            color: white;
+            border-radius: 3px;
+            text-decoration: none;
+            background-color: forestgreen;
+        }
+        form {
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<h1>Delete City</h1>
+<h2>Are you sure?</h2>
+<p>
+    <a href="/city/list">City list</a>
+</p>
+<form th:action="@{/city/delete}" th:object="${city}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td th:text="${city.name}"></td>
+        </tr>
+        <tr>
+            <td>Nation:</td>
+            <td th:text="${city.nation.name}"></td>
+        </tr>
+        <tr>
+            <td><a href="/city/list">Back</a></td>
+            <td><input type="submit" value="Delete" onclick="return confirm('Are you sure?')"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
